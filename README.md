@@ -1,11 +1,5 @@
 #🩺 Medifraud – Detecting Fraudulent Providers with ML
 
-
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![LightGBM](https://img.shields.io/badge/Model-LightGBM-green)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-![Colab](https://img.shields.io/badge/Platform-GoogleColab-yellow)
-
 ----
 
 ## 🧠 Introduction
@@ -225,5 +219,5 @@ To determine the best probability threshold for classifying fraudulent providers
 
 - Maximized precision-recall tradeoff observed in tuning visualizations.
 - Prevented over-flagging (as seen at 0.3) and under-flagging (as seen beyond 0.5).
-- Confirmed via comparative plots and submission distribution histog
+- Confirmed via comparative plots and submission distribution histogram.
 
