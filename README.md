@@ -75,7 +75,7 @@ Engineered new features: Total chronic conditions, claim duration, fraud density
 
 - **Class Distribution of `PotentialFraud`**
   - 📉 Shows imbalance between fraudulent and non-fraudulent claims—critical for metric selection and resampling strategy.
-![Model Diagram](files/Class Distribution of `PotentialFraud.png)
+![Alt text](./images/Class Distribution of `PotentialFraud.png)
 
 - **Missing Value Matrix**
   - 🔍 Highlights columns with missing data, helping decide between imputation or exclusion.
