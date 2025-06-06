@@ -75,36 +75,36 @@ Engineered new features: Total chronic conditions, claim duration, fraud density
 
 - **Class Distribution of `PotentialFraud`**
   - 📉 Shows imbalance between fraudulent and non-fraudulent claims—critical for metric selection and resampling strategy.
-![Alt text](./images/Class Distribution of `PotentialFraud.png)
+![Alt Text](files/cdpf.png)
 
 - **Missing Value Matrix**
   - 🔍 Highlights columns with missing data, helping decide between imputation or exclusion.
 
 - **Correlation Heatmap**
   - 🌡️ Identifies multicollinearity between numerical features and reveals strong fraud-related signals.
-![Model Diagram](files/Correlation Heatmap.png)
+![Model Diagram](files/ch.png)
 
 - **Pairplot of Top Numerical Features**
   - 📈 Visualizes separation between fraud and non-fraud across top features—useful for feature selection.
 
 - **Barplot of Fraud Rate by State**
   - 🗺️ Shows how fraud probability varies by state, indicating potential geographic patterns.
-![Model Diagram](files/Barplot of Fraud Rate by State.png)
+![Model Diagram](files/barplotFD.png.png)
 
 - **Histograms of Top 5 Numerical Features**
   - 🧮 Helps understand feature distributions, skewness, and outliers that may affect modeling.
-![Model Diagram](files/Histograms of Top 5 Numerical Features.png)
+![Model Diagram](files/h5nf.png)
 
 - **Countplot of Categorical Features by Fraud**
   - 🧾 Compares how fraud rates vary across categories like Gender, Race, and RenalDiseaseIndicator.
-![Model Diagram](files/Countplot of Categorical Features by Fraud.png)
+![Model Diagram](files/cpcf.png)
 
 - **Countplot of `TotalChronicConditions`**
   - 💊 Examines how the number of chronic conditions relates to fraud frequency.
 
 - **KDE Plot: `TotalChronicConditions` by Fraud**
   - 📊 Displays conditional density to assess how chronic illness count influences fraud probability.
-![Model Diagram](files/KDE Plot.png)
+![Model Diagram](files/kdeplot.png)
 
 ---
 
@@ -133,53 +133,53 @@ Below are the key visualizations used to evaluate, explain, and select the best 
 - Shows actual vs. predicted classes (TP, FP, FN, TN) to assess classification quality.
 - Helps evaluate how well fraud vs. non-fraud is detected.
 - Critical in understanding false positives and false negatives.
-![Model Diagram](files/Confusion Matrix – LightGBM.png)
+![Model Diagram](files/cmlgbm.png)
 
 ### 🥇 Model Comparison by F1 Score
 - Compares all trained models based on their F1 score.
 - LightGBM outperforms others, achieving the best precision-recall balance.
 - Justifies LightGBM as the selected final model.
-![Model Diagram](files/model comparison by f1 score.png)
+![Model Diagram](files/mcf1s.png)
 
 ### 📈 ROC Curve – LightGBM
 - Plots True Positive Rate (TPR) vs. False Positive Rate (FPR).
 - LightGBM curve is closest to the top-left corner, indicating strong classification.
 - Highlights the model’s ability to separate fraud from non-fraud effectively.
-![Model Diagram](files/roc curve for lightgbm.png)
+![Model Diagram](files/roclightgbm.png)
 
 ### 📊 Feature Importance – LightGBM
 - Shows the top contributing features in the model based on information gain.
 - Variables like `IPAnnualReimbursementAmt` and `ChronicCond_*` rank high.
 - Aids in transparency and domain validation of model decisions.
-![Model Diagram](files/feature importance .png)
+![Model Diagram](files/fi.png)
 
 
 ### 📉 Precision-Recall Curve – LightGBM
 - Evaluates model performance under class imbalance (rare fraud cases).
 - LightGBM maintains strong precision even at higher recall levels.
 - More informative than ROC in imbalanced datasets.
-![Model Diagram](files/precision recall curve.png)
+![Model Diagram](files/prc.png)
 
 
 ### 🌊 SHAP Beeswarm Plot – LightGBM (Directional Impact)
 - Global explanation of how each feature affects model output across all predictions.
 - Red points increase fraud probability; blue points reduce it.
 - Explains direction and magnitude of impact for top features.
-![Model Diagram](files/SHAP Beeswarm Plot (LightGBM.png)
+![Model Diagram](files/shapplot.png)
 
 
 ### 💡 Threshold Tuning Visualization – Optimize Precision/Recall/F1
 - Helps decide the best probability threshold (not always 0.5).
 - Highlights trade-offs between precision, recall, and F1 score.
 - Essential in fraud detection to balance missed fraud vs. over-flagging.
-![Model Diagram](files/threshold precision recall.png)
+![Model Diagram](files/thresholdprecisionrecall.png)
 
 
 ### 🔎 SHAP Force Plot – Individual Prediction Breakdown
 - Explains a single fraud prediction for one provider in detail.
 - Shows how specific feature values push the prediction toward fraud or not.
 - Useful for case-level investigation and stakeholder trust.
-![Model Diagram](files/SHAP Force Plot.png)
+![Model Diagram](files/SHAPForcePlot.png)
 
 ---
 
