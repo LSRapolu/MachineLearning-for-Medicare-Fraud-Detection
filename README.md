@@ -89,7 +89,7 @@ Engineered new features: Total chronic conditions, claim duration, fraud density
 
 - **Barplot of Fraud Rate by State**
   - 🗺️ Shows how fraud probability varies by state, indicating potential geographic patterns.
-![Model Diagram](files/barplotFD.png.png)
+![Alt Text](files/barplotFD.png)
 
 - **Histograms of Top 5 Numerical Features**
   - 🧮 Helps understand feature distributions, skewness, and outliers that may affect modeling.
