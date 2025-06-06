@@ -187,35 +187,28 @@ Below are the key visualizations used to evaluate, explain, and select the best 
 
 To determine the best probability threshold for classifying fraudulent providers, we analyzed model predictions across multiple thresholds using precision-recall metrics and prediction distributions.
 
-### 📈 Precision and Recall vs Threshold
-
-- Illustrates the trade-off between precision and recall as the classification threshold changes.
-- Aids in identifying an optimal balance where F1 score is maximized or recall is prioritized in fraud detection.
-![Model Diagram](files/pvst.png)
----
-
 ### 📊 Fraud Distribution at Threshold = 0.5
 
 - Initial submission using a 0.5 threshold predicted:
   - ✅ **Fraud Providers:** 718
   - ❌ **Non-Fraud Providers:** 635
 - This setting resulted in a slightly higher number of flagged fraudulent providers, but raised concerns of over-prediction.
+![Model Diagram](files/FDat0.5.png)
 
----
 
 ### 📉 Threshold Impact on Provider-Level Predictions
 
 - Bar chart comparing fraud/non-fraud prediction counts at thresholds 0.3, 0.5, 0.6, 0.7, and 0.8.
 - Demonstrates how increasing the threshold reduces fraud predictions but increases confidence in classification.
+![Model Diagram](files/thimpact.png)
 
----
 
 ### 📉 Precision-Recall Crossover Visualization
 
 - At **threshold ≈ 0.42**, precision and recall intersect and stabilize.
 - This point offers a practical balance—minimizing both false positives and false negatives—critical for healthcare fraud scenarios.
+![Model Diagram](files/pvst.png)
 
----
 
 ### ✅ Final Submission – Threshold = 0.42
 
@@ -225,8 +218,8 @@ To determine the best probability threshold for classifying fraudulent providers
   - ✅ **Non-Fraud Providers:** 426
   - 📦 **Total Providers Evaluated:** 1353
 - This threshold effectively balances model aggressiveness and conservatism, leading to more actionable fraud detection.
+![Model Diagram](files/FDat0.42.png)
 
----
 
 ### 🔍 Why Threshold = 0.42 Was Selected
 
