@@ -65,7 +65,33 @@ Engineered new features: Total chronic conditions, claim duration, fraud density
 
 ---
 
-### 📌 Visual Insights and What They Reveal
+## 🔎 Key Observations and Findings
+
+During the initial exploration of the Medicare dataset, several important patterns emerged, particularly from the beneficiary-level and provider-level data.
+
+### 🧑‍⚕️ Patient-Level Insights
+
+- Certain beneficiaries appeared to be at a higher risk or active target of fraud.
+- Patients with high **reimbursement amounts** stood out as potential fraud cases.
+- Several patients were observed to have unusually **high deductible payments**.
+- A subset of those with high reimbursements or deductibles also had **multiple chronic conditions**, increasing their vulnerability.
+
+### 🏥 Provider-Level Insights
+
+By comparing fraudulent vs. non-fraudulent providers across inpatient and outpatient claims, a few key differences were identified:
+
+- Fraudulent providers tend to show distinct patterns in terms of **claim amounts**, **service volume**, and **procedure diversity**.
+- Some features like physician involvement or repeated diagnosis/procedure codes were more frequent among fraudulent claims.
+
+### 🌍 Geographic and Demographic Factors
+
+- Certain **states and counties** appear to have higher concentrations of potentially fraudulent activity.
+- A patient’s **age range**, **geographic location**, **total claim amount**, and **primary physician** may collectively signal higher fraud risk.
+- These features can provide useful flags for investigators in prioritizing fraud detection efforts.
+
+---
+
+## 📌 Visual Insights and What They Reveal
 
 - **Class Distribution of `PotentialFraud`**
   - 📉 Shows imbalance between fraudulent and non-fraudulent claims—critical for metric selection and resampling strategy.
@@ -178,46 +204,20 @@ Below are the key visualizations used to evaluate, explain, and select the best 
 ---
 
 ## 🎯 Threshold Tuning and Final Selection
+To determine the optimal threshold for fraud classification, model performance was evaluated at multiple probability cutoffs using precision-recall analysis and fraud prediction distribution plots. An initial threshold of 0.5 flagged 718 out of 1353 providers as potentially fraudulent but leaned toward over-prediction. Visualizations of threshold impact showed that increasing the threshold reduced fraud predictions while improving classification certainty. At approximately 0.42, precision and recall curves intersected, indicating a practical balance between sensitivity and specificity. Based on this tradeoff, a threshold of 0.42 was finalized. The resulting predictions identified 927 providers as fraudulent and 426 as non-fraudulent, offering a more balanced and reliable submission outcome.
 
-To determine the best probability threshold for classifying fraudulent providers, we analyzed model predictions across multiple thresholds using precision-recall metrics and prediction distributions.
+---
 
-### 📊 Fraud Distribution at Threshold = 0.5
+## 🧾 Conclusion
 
-- Initial submission using a 0.5 threshold predicted:
-  - ✅ **Fraud Providers:** 718
-  - ❌ **Non-Fraud Providers:** 635
-- This setting resulted in a slightly higher number of flagged fraudulent providers, but raised concerns of over-prediction.
-![Model Diagram](files/FDat0.5.png)
+This project demonstrates a robust machine learning pipeline for detecting healthcare fraud in Medicare claims data by combining domain-driven feature engineering, model optimization, and interpretability techniques.
 
+Key takeaways:
 
-### 📉 Threshold Impact on Provider-Level Predictions
+- **LightGBM** emerged as the best-performing model with a strong balance across F1 score, AUC, and precision-recall tradeoffs, making it suitable for high-stakes fraud detection.
+- **Advanced feature selection** and rigorous preprocessing significantly improved model generalization while keeping training efficient.
+- **Threshold tuning** was critical; a default 0.5 threshold flagged too many providers. Instead, **0.42** was selected based on precision-recall balance.
+- **SHAP and interpretability tools** revealed influential features such as total claim amount, chronic conditions, and physician identifiers, enhancing transparency for investigators.
+- **EDA insights** suggested that geography, patient chronicity, and claim behavior could signal fraud hotspots, which aligns with real-world fraud patterns in healthcare.
 
-- Bar chart comparing fraud/non-fraud prediction counts at thresholds 0.3, 0.5, 0.6, 0.7, and 0.8.
-- Demonstrates how increasing the threshold reduces fraud predictions but increases confidence in classification.
-![Model Diagram](files/thimpact.png)
-
-
-### 📉 Precision-Recall Crossover Visualization
-
-- At **threshold ≈ 0.42**, precision and recall intersect and stabilize.
-- This point offers a practical balance—minimizing both false positives and false negatives—critical for healthcare fraud scenarios.
-![Model Diagram](files/pvst.png)
-
-
-### ✅ Final Submission – Threshold = 0.42
-
-- Based on the analysis, threshold = 0.42 was selected for final submission.
-- **Final Prediction Summary:**
-  - 🔍 **Fraud Providers:** 927
-  - ✅ **Non-Fraud Providers:** 426
-  - 📦 **Total Providers Evaluated:** 1353
-- This threshold effectively balances model aggressiveness and conservatism, leading to more actionable fraud detection.
-![Model Diagram](files/FDat0.42.png)
-
-
-### 🔍 Why Threshold = 0.42 Was Selected
-
-- Maximized precision-recall tradeoff observed in tuning visualizations.
-- Prevented over-flagging (as seen at 0.3) and under-flagging (as seen beyond 0.5).
-- Confirmed via comparative plots and submission distribution histogram.
-
+By integrating explainable AI and business-critical metrics, this solution offers a practical, scalable, and trustworthy tool for targeting fraudulent providers in large-scale medical billing systems.
